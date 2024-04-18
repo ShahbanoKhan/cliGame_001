@@ -5,7 +5,6 @@ import gradient from "gradient-string";
 import chalkAnimation from "chalk-animation";
 import figlet from "figlet";
 import { createSpinner } from "nanospinner";
-// let playerName: any[] = [];
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
 async function welcome() {
     const rainbowTittle = chalkAnimation.rainbow('Who Wants To Answer Some Questions? \n');
@@ -26,12 +25,11 @@ let playerName = await inquirer.prompt({
         return 'Player';
     },
 });
-// await playerName();
 async function que1() {
     const ans = await inquirer.prompt({
         name: 'que1',
         type: 'list',
-        message: 'What number is missing in this sequence?',
+        message: `What number is missing in this sequence? \n 2,4,6.8`,
         choices: [
             '10', '12', '14', '16'
         ],
@@ -75,10 +73,10 @@ async function handleAns(isCorrect) {
     const spinner = createSpinner('Checking answer...').start();
     await sleep();
     if (isCorrect) {
-        spinner.success({ text: `Nice work ${playerName}. That's a legit answer` });
+        spinner.success({ text: `Nice work ${playerName.playerName}. That's a legit answer` });
     }
     else {
-        spinner.error({ text: `💀💀💀 Game over, you lose ${playerName}!` });
+        spinner.error({ text: `💀💀💀 Game over, you lose ${playerName.playerName}!` });
         process.exit(1);
     }
 }

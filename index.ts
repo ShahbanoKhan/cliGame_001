@@ -37,7 +37,7 @@ const sleep = (ms = 2000) => new Promise((r) =>
         const ans = await inquirer.prompt({
             name: 'que1',
             type: 'list',
-            message: 'What number is missing in this sequence?',
+            message: `What number is missing in this sequence? \n 2,4,6,8,`,
             choices: [
                 '10','12','14','16'
             ],
@@ -85,9 +85,9 @@ const sleep = (ms = 2000) => new Promise((r) =>
         const spinner = createSpinner('Checking answer...').start();
         await sleep();
         if (isCorrect) {
-            spinner.success({ text: `Nice work ${playerName}. That's a legit answer`});
+            spinner.success({ text: `Nice work ${playerName.playerName}. That's a legit answer`});
         } else {
-            spinner.error({ text : `💀💀💀 Game over, you lose ${playerName}!`});
+            spinner.error({ text : `💀💀💀 Game over, you lose ${playerName.playerName}!`});
             process.exit(1);
         }
     }
